@@ -14,15 +14,17 @@ public class PlayerTester : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetMouseButton(0))
+        TouchInfo info = AppUtil.GetTouch();
+        if (info == TouchInfo.Moved)
         {
+            // タッチ開始
             Vector3 pos = gameObject.transform.position;
 
             pos.z += speed;
 
-            gameObject.transform.position=pos;
-
+            gameObject.transform.position = pos;
         }
+   
 		
 	}
 }
