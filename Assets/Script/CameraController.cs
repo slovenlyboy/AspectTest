@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
+    
+    [SerializeField]
+    CinemachineVirtualCamera vcam1;
+    [SerializeField]
+    CinemachineVirtualCamera vcam2;
 
     public float x_aspect = 9.0f;
     public float y_aspect = 16.0f;
@@ -18,6 +24,21 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown("space"))
+        {
+            if (vcam1.Priority > vcam2.Priority)
+            {
+                vcam1.Priority = 1;
+                vcam2.Priority = 2;
+            }
+            else
+            {
+                vcam1.Priority = 2;
+                vcam2.Priority = 1;
+            }
+
+        }
+
         Rect rect = calcAspect(x_aspect, y_aspect);
         camera.rect = rect;
     }
