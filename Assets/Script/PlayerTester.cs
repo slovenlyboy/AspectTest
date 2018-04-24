@@ -8,10 +8,20 @@ public class PlayerTester : MonoBehaviour {
     private float speed;
 
     [SerializeField]
+    private GameObject obj1;
+
+    [SerializeField]
+    private GameObject obj2;
+
+    [SerializeField]
+    Camera _camera;
+  
+
+    [SerializeField]
     private Vector3[] _positions;
 	// Use this for initialization
 	void Start () {
-		
+      
 	}
 	
 	// Update is called once per frame
@@ -26,7 +36,12 @@ public class PlayerTester : MonoBehaviour {
 
             pos.z += speed;
 
+           
+
             gameObject.transform.position = pos;
+
+
+         
         }
    
 		
