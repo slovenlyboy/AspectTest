@@ -6,40 +6,42 @@ using Cinemachine;
 public class CameraController : MonoBehaviour
 {
     
+    //ボタン操作用ヴァーチャルカメラ
     [SerializeField]
-    CinemachineVirtualCamera vcam1;
+    CinemachineVirtualCamera _vcam1;
     [SerializeField]
-    CinemachineVirtualCamera vcam2;
+    CinemachineVirtualCamera _vcam2;
 
-    public float x_aspect = 9.0f;
-    public float y_aspect = 16.0f;
+    public float _aspectX = 9.0f;
+    public float _aspectY = 16.0f;
     Camera camera;
 
     void Awake()
     {
         camera = GetComponent<Camera>();
-        Rect rect = calcAspect(x_aspect, y_aspect);
+        Rect rect = calcAspect(_aspectX, _aspectY);
         camera.rect = rect;
     }
 
     private void Update()
     {
+        //カメラ優先度変化テスト
         if (Input.GetKeyDown("space"))
         {
-            if (vcam1.Priority > vcam2.Priority)
+            if (_vcam1.Priority > _vcam2.Priority)
             {
-                vcam1.Priority = 1;
-                vcam2.Priority = 2;
+                _vcam1.Priority = 1;
+                _vcam2.Priority = 2;
             }
             else
             {
-                vcam1.Priority = 2;
-                vcam2.Priority = 1;
+                _vcam1.Priority = 2;
+                _vcam2.Priority = 1;
             }
 
         }
 
-        Rect rect = calcAspect(x_aspect, y_aspect);
+        Rect rect = calcAspect(_aspectX, _aspectY);
         camera.rect = rect;
     }
 
